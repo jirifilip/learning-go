@@ -7,3 +7,9 @@ build:
 run: build
     .\main.exe
 
+test:
+    go test ./... -v
+
+
+test-watch:
+    watchexec -w . go test ./... -v
