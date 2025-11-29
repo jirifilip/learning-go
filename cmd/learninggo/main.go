@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/jirifilip/learning-go/internal/utils"
+)
 
 func main() {
-	fmt.Println("Hello world!")
+	fmt.Printf("Hello world! Listing %d\n", utils.List())
 }

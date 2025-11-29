@@ -2,8 +2,8 @@ set shell := ["powershell.exe", "-c"]
 
 
 build:
-    go build ./...
+    go build cmd/learninggo/main.go
 
 run: build
-    .\learninggo.exe
+    .\main.exe
 
