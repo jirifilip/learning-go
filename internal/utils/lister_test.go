@@ -2,27 +2,11 @@ package utils
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"slices"
 	"testing"
+
+	"github.com/jirifilip/learning-go/testutils"
 )
-
-func makeDirWithTempFiles(t *testing.T, dirname string, filenames []string) string {
-	directory, err := os.MkdirTemp("", dirname)
-
-	if err != nil {
-		t.Fatal("Unable to create temporary directory")
-	}
-
-	for _, filename := range filenames {
-		fullpath := filepath.Join(directory, filename)
-
-		os.WriteFile(fullpath, []byte("Hello world!"), 0666)
-	}
-
-	return directory
-}
 
 func TestList(t *testing.T) {
 	result := List()
@@ -34,7 +18,7 @@ func TestList(t *testing.T) {
 
 func TestGetFilenames(t *testing.T) {
 	testFilenames := []string{"file1", "file2", "file3"}
-	dirPath := makeDirWithTempFiles(t, "testingdir", testFilenames)
+	dirPath := testutils.MakeDirWithTempFiles(t, "testingdir", testFilenames)
 
 	result := GetFilenames(dirPath)
 
@@ -45,7 +29,7 @@ func TestGetFilenames(t *testing.T) {
 
 func TestGetFiles(t *testing.T) {
 	filenames := []string{"file1", "file22"}
-	dirPath := makeDirWithTempFiles(t, "testingdir", filenames)
+	dirPath := testutils.MakeDirWithTempFiles(t, "testingdir", filenames)
 
 	infos := GetFiles(dirPath)
 
